@@ -1,24 +1,68 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./style/Sass/main.scss";
+
+//importing components
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import SidebarItem from "./components/SidebarItem";
+import Game from "./components/Game";
+
+//fake data
+const sidebarItems = [
+  {
+    icon: "i",
+    text: "text",
+    factor: "1.5",
+    arrow: ">"
+  },
+  {
+    icon: "i",
+    text: "text",
+    factor: "1.5",
+    arrow: ">"
+  },
+  {
+    icon: "i",
+    text: "text",
+    factor: "1.5",
+    arrow: ">"
+  },
+  {
+    icon: "i",
+    text: "text",
+    factor: "1.5",
+    arrow: ">"
+  }
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App btcl_main_wrapper">
+      <Header></Header>
+      <div className="btcl_left_menu">
+        {sidebarItems.map(item => {
+          return (
+            <SidebarItem
+              icon={item.icon}
+              text={item.text}
+              factor={item.factor}
+              arrow={item.arrow}
+            />
+          );
+        })}
+      </div>
+      <div className="btcl_center_menu">
+        <Game
+          title="real madrid"
+          type="ips"
+          homeTeamName="team one name"
+          awayTeamName="team one two"
+          homeTeamScore="1"
+          awayTeamScore="0"
+        />
+      </div>
+      <div className="btcl_right_menu"></div>
+      <Footer></Footer>
     </div>
   );
 }
